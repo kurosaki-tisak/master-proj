@@ -20,7 +20,7 @@ import {
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
-  NbLayoutModule
+  NbLayoutModule,
 } from '@nebular/theme';
 import { environment } from '../environments/environment';
 
@@ -39,8 +39,8 @@ import { RequestPasswordComponent } from './auth/request-password/request-passwo
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    LoginComponent, ResetPasswordComponent, RegisterComponent, RequestPasswordComponent
+    AppComponent,
+    LoginComponent, ResetPasswordComponent, RegisterComponent, RequestPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,13 +64,13 @@ import { RequestPasswordComponent } from './auth/request-password/request-passwo
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
 
   ],
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
-    AuthGuard, AuthService
+    AuthGuard, AuthService,
   ],
 })
 export class AppModule {

@@ -1,16 +1,15 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-service.service';
-import { 
-  NB_AUTH_OPTIONS, 
-  NbAuthSocialLink,
-  getDeepFromObject
+import {
+  NB_AUTH_OPTIONS,
+  getDeepFromObject,
  } from '@nebular/auth';
 
 @Component({
-  selector: 'app-request-password',
+  selector: 'ngx-request-password',
   templateUrl: './request-password.component.html',
-  styleUrls: ['./request-password.component.scss']
+  styleUrls: ['./request-password.component.scss'],
 })
 
 export class RequestPasswordComponent {
@@ -45,7 +44,7 @@ export class RequestPasswordComponent {
         this.submitted = false;
         this.messages = [res];
 
-        this.redirectToDashboard()
+        this.redirectToDashboard();
       })
       .catch((err) => {
         this.submitted = false;

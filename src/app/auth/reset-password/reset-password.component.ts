@@ -1,16 +1,15 @@
 import { Component, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth-service.service';
-import { 
-  NB_AUTH_OPTIONS, 
-  NbAuthSocialLink,
-  getDeepFromObject
+import {
+  NB_AUTH_OPTIONS,
+  getDeepFromObject,
  } from '@nebular/auth';
 
 @Component({
-  selector: 'app-reset-password',
+  selector: 'ngx-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  styleUrls: ['./reset-password.component.scss'],
 })
 
 export class ResetPasswordComponent {
@@ -32,7 +31,7 @@ export class ResetPasswordComponent {
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.code = params['oobCode'];
-      console.log(this.code); // Print the parameter to the console. 
+      console.log(this.code); // Print the parameter to the console.
     });
 
     this.redirectDelay = this.getConfigValue('forms.resetPassword.redirectDelay');
@@ -51,7 +50,7 @@ export class ResetPasswordComponent {
         this.submitted = false;
         this.messages = [res];
 
-        this.redirectToDashboard()
+        this.redirectToDashboard();
       })
       .catch((err) => {
         this.submitted = false;

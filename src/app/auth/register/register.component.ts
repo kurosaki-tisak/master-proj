@@ -1,16 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-service.service';
-import { 
-  NB_AUTH_OPTIONS, 
+import {
+  NB_AUTH_OPTIONS,
   NbAuthSocialLink,
-  getDeepFromObject
+  getDeepFromObject,
  } from '@nebular/auth';
 
 @Component({
-  selector: 'app-register',
+  selector: 'ngx-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 
 export class RegisterComponent {
@@ -45,7 +45,7 @@ export class RegisterComponent {
         this.submitted = false;
         this.messages = [];
 
-        this.redirectToDashboard()
+        this.redirectToDashboard();
       })
       .catch((err) => {
         this.submitted = false;
@@ -54,19 +54,19 @@ export class RegisterComponent {
   }
 
   loginSocial(name) {
-    if (name === "google") {
+    if (name === 'google') {
       this.loginGoogle();
-    } else if (name === "facebook") {
+    } else if (name === 'facebook') {
       this.loginFb();
     } else {
-      console.warn("No login for " + name);
+      console.warn('No login for ' + name);
     }
   }
 
   loginGoogle() {
     this.auth.signInWithGoogle()
       .then((success) => {
-        this.redirectToDashboard()
+        this.redirectToDashboard();
       })
       .catch((err) => {
         this.errors = [err];
@@ -76,7 +76,7 @@ export class RegisterComponent {
   loginFb() {
     this.auth.signInWithFacebook()
       .then((success) => {
-        this.redirectToDashboard()
+        this.redirectToDashboard();
       })
       .catch((err) => {
         this.errors = [err];
