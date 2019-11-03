@@ -43,24 +43,43 @@ export class AuthService {
     }
   }
 
-  register(email, password, fullName, company) {
-    return this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(
-        (afUser: firebase.User) => {
-          // Update the profile in firebase auth
-          afUser.updateProfile({
-            displayName: fullName,
-            photoURL: '',
-          }).then(() => afUser.sendEmailVerification());
-          // Create the user in firestore
-          this._firestore.firestore.collection('users').doc(afUser.uid).set(
-            {
-              uid: afUser.uid,
-              company: company,
-            },
-          );
+  async register(email, password, fullName, company): Promise<any> {
+    try {
+      this.newUser = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+
+      await firebase
+        .database()
+        .ref(`/userProfile/${this.newUser.uid}`)
+        .set({
+          email: email,
+          fullName: fullName,
+          company: company
         });
+      return this.newUser;
+    } catch (error) {
+      throw error;
+    }
   }
+
+  /*   register(email, password, fullName, company) {
+      return this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
+        .then((afUser) => {
+            // Update the profile in firebase auth
+            afUser.updateProfile({
+              displayName: fullName,
+              photoURL: '',
+            }).then(() => afUser.sendEmailVerification());
+            // Create the user in firestore
+            this._firestore.firestore.collection('users').doc(afUser.uid).set(
+              {
+                uid: afUser.uid,
+                company: company,
+              },
+            );
+          });
+    } */
 
   requestPass(email) {
     return this._firebaseAuth.auth.sendPasswordResetEmail(email);

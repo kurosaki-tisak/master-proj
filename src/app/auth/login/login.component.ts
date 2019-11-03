@@ -42,7 +42,7 @@ export class LoginComponent {
     this.auth.signInWithEmail(this.user.email, this.user.password)
       .then((res) => {
         this.submitted = false;
-        this.messages = [res];
+        this.messages = [res.user.displayName];
 
         this.redirectToDashboard();
       })
