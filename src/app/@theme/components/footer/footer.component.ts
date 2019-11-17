@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'ngx-footer',
   styleUrls: ['./footer.component.scss'],
   template: `
-    
   `,
 })
 export class FooterComponent {
