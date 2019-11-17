@@ -10,13 +10,4 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
-    apiKey: 'AIzaSyDLtIprjHyUwiOP_HkPwlkhzhvwxu5GqZs',
-    authDomain: 'bsd-master-project.firebaseapp.com',
-    databaseURL: 'https://bsd-master-project.firebaseio.com',
-    projectId: 'bsd-master-project',
-    storageBucket: 'bsd-master-project.appspot.com',
-    messagingSenderId: '731468307269',
-    appId: '1:731468307269:web:9bdd2fd6e99f6220c1bc2c',
-  },
 };

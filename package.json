@@ -1,13 +1,13 @@
 {
-  "name": "master-proj",
+  "name": "ngx-admin",
   "version": "4.0.1",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kurosaki-tisak/master-proj.git"
+    "url": "git+https://github.com/akveo/ngx-admin.git"
   },
   "bugs": {
-    "url": "https://github.com/kurosaki-tisak/master-proj/issues"
+    "url": "https://github.com/akveo/ngx-admin/issues"
   },
   "scripts": {
     "ng": "ng",
@@ -35,7 +35,6 @@
     "@angular/common": "^8.0.0",
     "@angular/compiler": "^8.0.0",
     "@angular/core": "^8.0.0",
-    "@angular/fire": "^5.2.1",
     "@angular/forms": "^8.0.0",
     "@angular/platform-browser": "^8.0.0",
     "@angular/platform-browser-dynamic": "^8.0.0",
@@ -56,7 +55,6 @@
     "core-js": "2.5.1",
     "echarts": "^4.0.2",
     "eva-icons": "^1.1.0",
-    "firebase": "^7.2.3",
     "intl": "1.2.5",
     "ionicons": "2.0.1",
     "leaflet": "1.2.0",
