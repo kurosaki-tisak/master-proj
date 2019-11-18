@@ -2,10 +2,31 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'MASTER DATA',
+    group: true,
+  },
+  {
+    title: 'Suit',
+    icon: 'briefcase-outline',
+    children: [
+      {
+        title: 'Suit Colors',
+        link: '/pages/suit/suit-color',
+      },
+      {
+        title: 'Suit Types',
+        link: '/pages/suit/suit-type',
+      },
+      {
+        title: 'Suit Parts',
+        link: '/pages/suit/suit-part',
+      },
+    ]
+  },
+  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
-    home: true,
   },
   {
     title: 'IoT Dashboard',

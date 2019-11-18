@@ -11,6 +11,11 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
+      path: 'suit',
+      loadChildren: () => import('./suit/suit.module')
+        .then(m => m.SuitModule),
+    },
+    {
       path: 'dashboard',
       component: ECommerceComponent,
     },
