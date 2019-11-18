@@ -21,7 +21,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Suit Parts',
         link: '/pages/suit/suit-part',
       },
-    ]
+    ],
   },
   {
     title: 'E-commerce',
