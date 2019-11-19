@@ -43,7 +43,6 @@ export class SuitColorComponent implements OnInit {
     this.dataState();
     const s = this.api.GetSuitColorList();
     s.snapshotChanges().subscribe(data => {
-      
     });
   }
 
