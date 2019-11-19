@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SuitColorService } from '../../../shared/suit-color.service';
 
 @Component({
-  selector: 'ngx-suit-color',
-  templateUrl: './suit-color.component.html',
-  styleUrls: ['./suit-color.component.scss'],
+  selector: 'ngx-body-type',
+  templateUrl: './body-type.component.html',
+  styleUrls: ['./body-type.component.scss'],
 })
-export class SuitColorComponent implements OnInit {
+export class BodyTypeComponent implements OnInit {
 
   settings = {
     add: {
@@ -28,27 +27,32 @@ export class SuitColorComponent implements OnInit {
         title: 'ID',
         type: 'number',
       },
-      title: {
-        title: 'Description',
+      firstName: {
+        title: 'First Name',
         type: 'string',
+      },
+      lastName: {
+        title: 'Last Name',
+        type: 'string',
+      },
+      username: {
+        title: 'Username',
+        type: 'string',
+      },
+      email: {
+        title: 'E-mail',
+        type: 'string',
+      },
+      age: {
+        title: 'Age',
+        type: 'number',
       },
     },
   };
 
-  source: any;
-
-  constructor(private api: SuitColorService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.dataState();
-    const s = this.api.GetSuitColorList();
-    s.snapshotChanges().subscribe(data => {
-      this.SuitColor = data;
-    });
-  }
-
-  dataState() {
-    this.api.GetSuitColorList().valueChanges().subscribe();
   }
 
 }

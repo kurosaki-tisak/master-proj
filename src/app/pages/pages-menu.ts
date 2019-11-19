@@ -24,6 +24,54 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Shirt',
+    icon: 'cube-outline',
+    children: [
+      {
+        title: 'Shirt Parts',
+        link: '/pages/shirt/shirt-part',
+      },
+    ],
+  },
+  {
+    title: 'Body',
+    icon: 'github-outline',
+    children: [
+      {
+        title: 'Body Types',
+        link: '/pages/body/body-type',
+      },
+    ],
+  },
+  {
+    title: 'TRANSACTION',
+    group: true,
+  },
+  {
+    title: 'Order',
+    icon: 'clipboard-outline',
+    link: '/pages/order',
+  },
+  {
+    title: 'Billing',
+    icon: 'credit-card-outline',
+    link: '/pages/billing',
+  },
+  {
+    title: 'USER MANAGEMENT',
+    group: true,
+  },
+  {
+    title: 'Customer',
+    icon: 'globe-outline',
+    link: '/pages/customer',
+  },
+  {
+    title: 'User',
+    icon: 'person-outline',
+    link: '/pages/user',
+  },
+  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',

@@ -2,6 +2,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
+import { OrderComponent } from './order/order.component';
+import { BillingComponent } from './billing/billing.component';
+import { CustomerComponent } from './customer/customer.component';
+import { UserComponent } from './user/user.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
@@ -14,6 +19,32 @@ const routes: Routes = [{
       path: 'suit',
       loadChildren: () => import('./suit/suit.module')
         .then(m => m.SuitModule),
+    },
+    {
+      path: 'shirt',
+      loadChildren: () => import('./shirt/shirt.module')
+        .then(m => m.ShirtModule),
+    },
+    {
+      path: 'body',
+      loadChildren: () => import('./body/body.module')
+        .then(m => m.BodyModule),
+    },
+    {
+      path: 'order',
+      component: OrderComponent,
+    },
+    {
+      path: 'billing',
+      component: BillingComponent,
+    },
+    {
+      path: 'customer',
+      component: CustomerComponent,
+    },
+    {
+      path: 'user',
+      component: UserComponent,
     },
     {
       path: 'dashboard',

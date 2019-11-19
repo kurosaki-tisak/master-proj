@@ -8,6 +8,11 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 
+import { OrderModule } from './order/order.module';
+import { BillingModule } from './billing/billing.module';
+import { CustomerModule } from './customer/customer.module';
+import { UserModule } from './user/user.module';
+
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -16,6 +21,10 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
+    OrderModule,
+    BillingModule,
+    CustomerModule,
+    UserModule,
   ],
   declarations: [
     PagesComponent,

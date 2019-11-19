@@ -21,6 +21,10 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -30,6 +34,9 @@ import {
     AppRoutingModule,
 
     ThemeModule.forRoot(),
+
+    AngularFireModule.initializeApp(environment.firebaseConfig), // Main Angular fire module
+    AngularFireDatabaseModule,  // Firebase database module
 
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
