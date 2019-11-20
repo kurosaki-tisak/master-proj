@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ThemeModule } from '../../@theme/theme.module';
 import { NbCardModule, NbIconModule, NbInputModule } from '@nebular/theme';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { SuitRoutingModule } from './suit-routing.module';
 
 import { SuitComponent } from './suit.component';
@@ -14,6 +15,7 @@ import { SuitTypeComponent } from './suit-type/suit-type.component';
     NbCardModule,
     NbIconModule,
     NbInputModule,
+    Ng2SmartTableModule,
     SuitRoutingModule,
   ],
   declarations: [

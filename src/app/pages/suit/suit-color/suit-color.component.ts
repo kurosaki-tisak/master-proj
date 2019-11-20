@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalDataSource } from 'ng2-smart-table';
 import { SuitColorService } from '../../../shared/suit-color.service';
+import { SuitColor } from '../../../shared/domain';
 
 @Component({
   selector: 'ngx-suit-color',
@@ -35,7 +37,8 @@ export class SuitColorComponent implements OnInit {
     },
   };
 
-  source: any;
+  suitColorList: SuitColor[];
+  source: LocalDataSource = new LocalDataSource();
 
   constructor(private api: SuitColorService) { }
 
@@ -43,6 +46,13 @@ export class SuitColorComponent implements OnInit {
     this.dataState();
     const s = this.api.GetSuitColorList();
     s.snapshotChanges().subscribe(data => {
+      this.suitColorList = [];
+      data.forEach(item => {
+        const a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.suitColorList.push(a as SuitColor);
+      });
+      this.source.load(this.suitColorList);
     });
   }
 
