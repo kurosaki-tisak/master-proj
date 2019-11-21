@@ -4,3 +4,5 @@ export * from './suit-part';
 export * from './sub-suit-part';
 export * from './customer';
 export * from './body-obj';
+export * from './transaction';
+export * from './transaction-order';

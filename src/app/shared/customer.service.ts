@@ -13,7 +13,7 @@ export class CustomerService {
 
   // Fetch Customer List
   GetCustomerList() {
-    this.customerList = this.db.list('user');
+    this.customerList = this.db.list('customer');
     return this.customerList;
   }
 
