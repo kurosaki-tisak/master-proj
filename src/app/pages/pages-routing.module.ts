@@ -6,6 +6,8 @@ import { OrderComponent } from './order/order.component';
 import { BillingComponent } from './billing/billing.component';
 import { CustomerComponent } from './customer/customer.component';
 import { UserComponent } from './user/user.component';
+import { NewOrderComponent } from './new-order/new-order.component';
+import { PrintingComponent } from './printing/printing.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
@@ -35,8 +37,16 @@ const routes: Routes = [{
       component: OrderComponent,
     },
     {
+      path: 'new-order',
+      component: NewOrderComponent,
+    },
+    {
       path: 'billing',
       component: BillingComponent,
+    },
+    {
+      path: 'printing',
+      component: PrintingComponent,
     },
     {
       path: 'customer',

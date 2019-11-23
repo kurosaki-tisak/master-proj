@@ -13,6 +13,7 @@ import { BillingModule } from './billing/billing.module';
 import { CustomerModule } from './customer/customer.module';
 import { UserModule } from './user/user.module';
 import { NewOrderComponent } from './new-order/new-order.component';
+import { PrintingComponent } from './printing/printing.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { NewOrderComponent } from './new-order/new-order.component';
   declarations: [
     PagesComponent,
     NewOrderComponent,
+    PrintingComponent,
   ],
 })
 export class PagesModule {

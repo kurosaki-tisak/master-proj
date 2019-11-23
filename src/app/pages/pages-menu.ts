@@ -7,18 +7,33 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Dashboard',
-    icon: 'shopping-cart-outline',
+    icon: 'activity-outline',
     link: '/pages/dashboard',
   },
   {
-    title: 'Order',
+    title: 'New Order',
     icon: 'clipboard-outline',
+    link: '/pages/new-order',
+  },
+  {
+    title: 'Order',
+    icon: 'shopping-cart-outline',
     link: '/pages/order',
   },
   {
     title: 'Billing',
     icon: 'credit-card-outline',
     link: '/pages/billing',
+  },
+  {
+    title: 'Printing',
+    icon: 'printer-outline',
+    link: '/pages/printing',
+  },
+  {
+    title: 'Customer',
+    icon: 'globe-outline',
+    link: '/pages/customer',
   },
   {
     title: 'MASTER DATA',
@@ -65,11 +80,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'USER MANAGEMENT',
     group: true,
-  },
-  {
-    title: 'Customer',
-    icon: 'globe-outline',
-    link: '/pages/customer',
   },
   {
     title: 'User',
