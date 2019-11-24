@@ -95,5 +95,4 @@ export class NewOrderComponent implements OnInit {
       });
     });
   }
-
 }
