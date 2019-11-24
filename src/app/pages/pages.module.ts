@@ -12,8 +12,8 @@ import { OrderModule } from './order/order.module';
 import { BillingModule } from './billing/billing.module';
 import { CustomerModule } from './customer/customer.module';
 import { UserModule } from './user/user.module';
-import { NewOrderComponent } from './new-order/new-order.component';
-import { PrintingComponent } from './printing/printing.component';
+import { NewOrderModule } from './new-order/new-order.module';
+import { PrintingModule } from './printing/printing.module';
 
 @NgModule({
   imports: [
@@ -27,11 +27,11 @@ import { PrintingComponent } from './printing/printing.component';
     BillingModule,
     CustomerModule,
     UserModule,
+    NewOrderModule,
+    PrintingModule,
   ],
   declarations: [
     PagesComponent,
-    NewOrderComponent,
-    PrintingComponent,
   ],
 })
 export class PagesModule {

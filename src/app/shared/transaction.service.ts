@@ -6,8 +6,8 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
 })
 export class TransactionService {
 
-  transactionList: AngularFireList<any>;    // Reference to Student data list, its an Observable
-  transaction: AngularFireObject<any>;   // Reference to Student object, its an Observable too
+  transactionList: AngularFireList<any>;    // Reference to data list, its an Observable
+  transaction: AngularFireObject<any>;   // Reference to object, its an Observable too
 
   constructor(private db: AngularFireDatabase) { }
 
