@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  FormArray,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 import { EventType, SuitColor, SuitType } from '../../shared/domain';
 import { EventTypeService } from '../../shared/event-type.service';
@@ -32,6 +39,8 @@ export class NewOrderComponent implements OnInit {
     this.onColorListDataState();
 
     this.firstForm = this.fb.group({
+      eventTypes: new FormArray([], minSelectedCheckboxes[1]),
+      firstFb: ['', Validators.required],
     });
 
     this.secondForm = this.fb.group({
@@ -45,7 +54,10 @@ export class NewOrderComponent implements OnInit {
   }
 
   onFirstSubmit() {
-    this.firstForm.markAsDirty();
+    const selectedOrderIds = this.firstForm.value.eventTypes
+      .map((v, i) => v ? this.eventList[i].id : null)
+      .filter(v => v !== null);
+    selectedOrderIds;
   }
 
   onSecondSubmit() {
@@ -64,10 +76,13 @@ export class NewOrderComponent implements OnInit {
     const s = this.eventAPI.GetEventTypeList();
     s.snapshotChanges().subscribe(data => {
       this.eventList = [];
-      data.forEach(item => {
-        const a = item.payload.toJSON();
-        a['$key'] = item.key;
+      data.forEach((obj, index) => {
+        const a = obj.payload.toJSON();
+        a['$key'] = obj.key;
         this.eventList.push(a as EventType);
+
+        const control = new FormControl(index === 0); // if first item set to true, else false
+        (this.firstForm.controls.eventTypes as FormArray).push(control);
       });
     });
   }
@@ -95,4 +110,16 @@ export class NewOrderComponent implements OnInit {
       });
     });
   }
+}
+
+function minSelectedCheckboxes(min = 1) {
+  const validator: ValidatorFn = (formArray: FormArray) => {
+    const totalSelected = formArray.controls
+      .map(control => control.value)
+      .reduce((prev, next) => next ? prev + next : prev, 0);
+
+    return totalSelected >= min ? null : { required: true };
+  };
+
+  return validator;
 }
