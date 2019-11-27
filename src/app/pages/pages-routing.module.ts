@@ -7,6 +7,11 @@ import { BillingComponent } from './billing/billing.component';
 import { CustomerComponent } from './customer/customer.component';
 import { UserComponent } from './user/user.component';
 import { NewOrderComponent } from './new-order/new-order.component';
+import { NewOrderStepOneComponent } from './new-order-step-one/new-order-step-one.component';
+import { NewOrderStepTwoComponent } from './new-order-step-two/new-order-step-two.component';
+import { NewOrderStepThreeComponent } from './new-order-step-three/new-order-step-three.component';
+import { NewOrderStepFourComponent } from './new-order-step-four/new-order-step-four.component';
+import { NewOrderStepFiveComponent } from './new-order-step-five/new-order-step-five.component';
 import { PrintingComponent } from './printing/printing.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -39,6 +44,26 @@ const routes: Routes = [{
     {
       path: 'new-order',
       component: NewOrderComponent,
+    },
+    {
+      path: 'new-order-step-one',
+      component: NewOrderStepOneComponent,
+    },
+    {
+      path: 'new-order-step-two',
+      component: NewOrderStepTwoComponent,
+    },
+    {
+      path: 'new-order-step-three',
+      component: NewOrderStepThreeComponent,
+    },
+    {
+      path: 'new-order-step-four',
+      component: NewOrderStepFourComponent,
+    },
+    {
+      path: 'new-order-step-five',
+      component: NewOrderStepFiveComponent,
     },
     {
       path: 'billing',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,6 +7,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { NbStepperComponent } from '@nebular/theme';
 
 import { EventType, SuitColor, SuitType } from '../../shared/domain';
 import { EventTypeService } from '../../shared/event-type.service';
@@ -28,6 +29,8 @@ export class NewOrderComponent implements OnInit {
   suitTypeList: SuitType[];
   suitColorList: SuitColor[];
 
+  @ViewChild('stepper', { static: true }) stepperComponent: NbStepperComponent;
+
   constructor(private fb: FormBuilder,
     private eventAPI: EventTypeService,
     private suitTypeAPI: SuitTypeService,
@@ -39,8 +42,8 @@ export class NewOrderComponent implements OnInit {
     this.onColorListDataState();
 
     this.firstForm = this.fb.group({
-      eventTypes: new FormArray([], minSelectedCheckboxes[1]),
-      firstFb: ['', Validators.required],
+      eventTypes: new FormArray([]),
+      firstCtrl: ['', Validators.required],
     });
 
     this.secondForm = this.fb.group({
@@ -54,10 +57,12 @@ export class NewOrderComponent implements OnInit {
   }
 
   onFirstSubmit() {
+    this.firstForm.markAsDirty();
+
     const selectedOrderIds = this.firstForm.value.eventTypes
       .map((v, i) => v ? this.eventList[i].id : null)
       .filter(v => v !== null);
-    selectedOrderIds;
+    console.log(selectedOrderIds);
   }
 
   onSecondSubmit() {
@@ -81,7 +86,7 @@ export class NewOrderComponent implements OnInit {
         a['$key'] = obj.key;
         this.eventList.push(a as EventType);
 
-        const control = new FormControl(index === 0); // if first item set to true, else false
+        const control = new FormControl(); // if first item set to true, else false
         (this.firstForm.controls.eventTypes as FormArray).push(control);
       });
     });

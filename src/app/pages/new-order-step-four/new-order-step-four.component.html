@@ -1,0 +1,130 @@
+<nb-card>
+  <nb-card-header>
+    Step 4
+  </nb-card-header>
+
+  <nb-card-body>
+    <form (ngSubmit)="onForthSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-header>สัดส่วนท่อนบน</nb-card-header>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบคอ</label>
+              <input type="number" nbInput fullWidth fieldSize="large" #circumferenceNeck placeholder="รอบคอ">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบอก</label>
+              <input type="number" nbInput fullWidth fieldSize="large" #chest placeholder="รอบอก">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">หน้าอกส่วนหน้า</label>
+              <input type="number" nbInput fullWidth fieldSize="large" #chestFront placeholder="หน้าอกส่วนหน้า">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">หน้าอกส่วนหลัง</label>
+              <input type="number" nbInput fullWidth fieldSize="large" #chestBack placeholder="หน้าอกส่วนหลัง">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ความยาวแขน(ขวา)</label>
+              <input type="number" nbInput fullWidth fieldSize="large" #armLenghtRight placeholder="ความยาวแขน(ขวา)">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ความยาวแขน(ซ้าย)</label>
+              <input type="number" nbInput fullWidth fieldSize="large" #armLenghtLeft placeholder="ความยาวแขน(ซ้าย)">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบกล้ามแขน</label>
+              <input type="number" nbInput fullWidth fieldSize="large" #armMuscles placeholder="รอบกล้ามแขน">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+          </nb-card>
+
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-header>สัดส่วนท่อนล่าง</nb-card-header>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบน่อง</label>
+              <input type="number" nbInput fullWidth #circumferenceCalf placeholder="รอบน่อง">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบปลายขา</label>
+              <input type="number" nbInput fullWidth #circumferenceLegs placeholder="รอบปลายขา">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบต้นขา</label>
+              <input type="number" nbInput fullWidth #circumferenceThigh placeholder="รอบต้นขา">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ความยาวกางเกง</label>
+              <input type="number" nbInput fullWidth #lengthPant placeholder="ความยาวกางเกง">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-header>สัดส่วนท่อนกลาง</nb-card-header>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">เอวเสื้อ</label>
+              <input type="number" nbInput fullWidth #waistShirt placeholder="เอวเสื้อ (เหนือสะดือ)">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">เอวกางเกง</label>
+              <input type="number" nbInput fullWidth #waistPant placeholder="เอวกางเกง (เอวที่ใส่กางเกงปกติ)">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ข้อมือ</label>
+              <input type="number" nbInput fullWidth #wrist placeholder="ข้อมือ">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">เป้า</label>
+              <input type="number" nbInput fullWidth #crotch
+                placeholder="เป้า (จากขอบกางเกงด้านหน้า อ้อมไปถึงด้านหลัง)">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบพุง</label>
+              <input type="number" nbInput fullWidth #bellyRound placeholder="รอบพุง">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">สะโพก</label>
+              <input type="number" nbInput fullWidth #hip placeholder="สะโพก (ตรงช่วงก้นที่นูนที่สุด)">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">สะโพกเสื้อ</label>
+              <input type="number" nbInput fullWidth #hipShirt placeholder="สะโพกเสื้อ (บริเวณรอบสะโพกที่กว้างที่สุด)">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ความยาวเชิ้ต</label>
+              <input type="number" nbInput fullWidth #lengthShirt placeholder="ความยาวเชิ้ต">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ความยาวสูท</label>
+              <input type="number" nbInput fullWidth #lengthSuit placeholder="ความยาวสูท">
+              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+            </div>
+          </nb-card>
+        </div>
+      </div>
+      <button nbButton>Confirm</button>
+    </form>
+  </nb-card-body>
+</nb-card>

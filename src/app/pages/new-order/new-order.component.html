@@ -14,12 +14,12 @@
                   </div>
                 </div>
                 <nb-card-footer>
-                  <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>
+                  <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>              
                 </nb-card-footer>
               </nb-card>
             </div>
           </div>
-          <button nbButton nbStepperNext (click)="stepper.next()">next</button>
+          <button nbButton (click)="stepper.next()">next</button>
         </form>
       </nb-step>
       <nb-step [stepControl]="secondForm" label="เลือกประเภทสูท">
