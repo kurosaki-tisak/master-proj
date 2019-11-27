@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -43,7 +44,28 @@ export class NewOrderStepTwoComponent implements OnInit {
       .map((v, i) => v ? this.suitTypeList[i].id : null)
       .filter(v => v !== null);
 
+    const param = this.onFindChecked(selectedOrderIds);
+    const merged = this.onUnionParam(param);
+
+    this.data.storage = { 'selectedIds': merged };
+
     this.router.navigate(['/pages/new-order-step-three']);
+  }
+
+  onFindChecked(list: []) {
+    const result = [];
+    list.forEach((obj, index) => {
+      result.push(this.suitTypeList.find((v => v.id === obj))['suit-type']);
+    });
+    return result;
+  }
+
+  onUnionParam(list: SuitType[]) {
+    let result: SuitType[];
+    list.forEach((obj, index) => {
+      result = _.merge(obj);
+    });
+    return result;
   }
 
   onSuitTypeListDataState() {
@@ -63,8 +85,8 @@ export class NewOrderStepTwoComponent implements OnInit {
 
   onFilterOutSelected(list: SuitType[]) {
     const result = [];
-    this.selectedIndex.forEach((obj, _) => {
-      result.push(list.find((v => v.title != obj.title))['suit-type']);
+    this.selectedIndex.forEach((obj, index) => {
+      result.push(list.find((v => v.title !== obj.title))['suit-type']);
     });
     return result;
   }
