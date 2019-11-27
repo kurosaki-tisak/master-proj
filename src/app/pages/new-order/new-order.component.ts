@@ -62,7 +62,6 @@ export class NewOrderComponent implements OnInit {
     const selectedOrderIds = this.firstForm.value.eventTypes
       .map((v, i) => v ? this.eventList[i].id : null)
       .filter(v => v !== null);
-    console.log(selectedOrderIds);
   }
 
   onSecondSubmit() {
