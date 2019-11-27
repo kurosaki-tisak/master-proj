@@ -58,10 +58,6 @@ export class NewOrderComponent implements OnInit {
 
   onFirstSubmit() {
     this.firstForm.markAsDirty();
-
-    const selectedOrderIds = this.firstForm.value.eventTypes
-      .map((v, i) => v ? this.eventList[i].id : null)
-      .filter(v => v !== null);
   }
 
   onSecondSubmit() {
@@ -116,14 +112,3 @@ export class NewOrderComponent implements OnInit {
   }
 }
 
-function minSelectedCheckboxes(min = 1) {
-  const validator: ValidatorFn = (formArray: FormArray) => {
-    const totalSelected = formArray.controls
-      .map(control => control.value)
-      .reduce((prev, next) => next ? prev + next : prev, 0);
-
-    return totalSelected >= min ? null : { required: true };
-  };
-
-  return validator;
-}

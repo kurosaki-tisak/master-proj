@@ -62,7 +62,7 @@ export class NewOrderStepTwoComponent implements OnInit {
   }
 
   onFilterOutSelected(list: SuitType[]) {
-    let result = [];
+    const result = [];
     this.selectedIndex.forEach((obj, _) => {
       result.push(list.find((v => v.title != obj.title))['suit-type']);
     });

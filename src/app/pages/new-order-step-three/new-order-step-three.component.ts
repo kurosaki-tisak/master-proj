@@ -36,7 +36,6 @@ export class NewOrderStepThreeComponent implements OnInit {
     const selectedOrderIds = this.thirdForm.value.colorList
       .map((v, i) => v ? this.suitColorList[i].id : null)
       .filter(v => v !== null);
-    console.log(selectedOrderIds);
 
     this.router.navigate(['/pages/new-order-step-four'], { queryParams: { selectedIndex: selectedOrderIds } });
   }

@@ -48,7 +48,7 @@ export class NewOrderStepOneComponent implements OnInit {
   }
 
 onFindChecked(list: []) {
-  let result = [];
+  const result = [];
   list.forEach((obj, _) => {
     result.push(this.eventList.find((v => v.id == obj))['suit-type']);
   });
