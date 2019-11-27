@@ -35,7 +35,6 @@ export class NewOrderStepFourComponent implements OnInit {
   }
 
   onForthSubmit() {
-    console.log(this.onFindBodyType());
   }
 
   onFindBodyType() {
@@ -47,11 +46,6 @@ export class NewOrderStepFourComponent implements OnInit {
     const isH = (hip / chest);
     const isA = (hip / chest);
     const isX = (waist / hip);
-
-    console.log('V :' + isV);
-    console.log('H :' + isH);
-    console.log('A :' + isA);
-    console.log('X :' + isX);
 
     if (isV >= 1.05) {
       return 'V';
