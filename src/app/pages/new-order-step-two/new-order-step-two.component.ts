@@ -8,7 +8,7 @@ import {
   FormArray,
 } from '@angular/forms';
 
-import { SuitType } from '../../shared/domain';
+import { SuitType, SuitColor } from '../../shared/domain';
 import { SuitTypeService } from '../../shared/suit-type.service';
 import { DataproviderService } from '../../dataprovider.service';
 
@@ -28,7 +28,9 @@ export class NewOrderStepTwoComponent implements OnInit {
     private router: Router,
     private data: DataproviderService) {
 
-    this.selectedIndex = this.data.storage;
+    this.selectedIndex = this.data.eventStorage;
+
+    // console.log(this.selectedIndex);
   }
 
   ngOnInit() {
@@ -44,10 +46,12 @@ export class NewOrderStepTwoComponent implements OnInit {
       .map((v, i) => v ? this.suitTypeList[i].id : null)
       .filter(v => v !== null);
 
+    // console.log(selectedOrderIds);
+
     const param = this.onFindChecked(selectedOrderIds);
     const merged = this.onUnionParam(param);
 
-    this.data.storage = { 'selectedIds': merged };
+    this.data.suitTypeStorage = { 'selectedIds': merged };
 
     this.router.navigate(['/pages/new-order-step-three']);
   }
@@ -55,13 +59,13 @@ export class NewOrderStepTwoComponent implements OnInit {
   onFindChecked(list: []) {
     const result = [];
     list.forEach((obj, index) => {
-      result.push(this.suitTypeList.find((v => v.id === obj))['suit-type']);
+      result.push(this.suitTypeList.find((v => v.id === obj))['suit-color']);
     });
     return result;
   }
 
-  onUnionParam(list: SuitType[]) {
-    let result: SuitType[];
+  onUnionParam(list: SuitColor[]) {
+    let result: SuitColor[];
     list.forEach((obj, index) => {
       result = _.merge(obj);
     });
@@ -77,7 +81,10 @@ export class NewOrderStepTwoComponent implements OnInit {
         a['$key'] = obj.key;
         this.suitTypeList.push(a as SuitType);
 
-        const control = new FormControl(); // if first item set to true, else false
+       // const s = this.onFilterOutSelected(this.suitTypeList)
+       // console.log(s)
+
+        const control = new FormControl();
         (this.secondForm.controls.suitTypes as FormArray).push(control);
       });
     });
@@ -86,7 +93,7 @@ export class NewOrderStepTwoComponent implements OnInit {
   onFilterOutSelected(list: SuitType[]) {
     const result = [];
     this.selectedIndex.forEach((obj, index) => {
-      result.push(list.find((v => v.title !== obj.title))['suit-type']);
+      result.push(list.filter((v => v.title !== obj.title))['suit-type']);
     });
     return result;
   }

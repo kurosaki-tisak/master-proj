@@ -6,13 +6,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
-    title: 'Dashboard',
-    icon: 'activity-outline',
-    link: '/pages/dashboard',
-  },
-  {
-    title: 'New Order',
-    icon: 'clipboard-outline',
+    title: 'Order',
     link: '/pages/new-order',
   },
   {

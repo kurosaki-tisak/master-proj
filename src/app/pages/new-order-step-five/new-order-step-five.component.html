@@ -4,5 +4,17 @@
   </nb-card-header>
 
   <nb-card-body>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let item of filteredList; let i = index"></div>
+      <nb-card size="medium">
+        <div class="picture" style.background-image="url('assets/images/kitten-corporate.png')"></div>
+        <div class="details">
+          <div class="h1"></div>
+          <div class="description">
+           
+          </div>
+        </div>
+      </nb-card>
+    </div>
   </nb-card-body>
 </nb-card>

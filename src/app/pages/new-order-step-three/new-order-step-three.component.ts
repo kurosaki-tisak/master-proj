@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -9,6 +10,7 @@ import {
 
 import { SuitColor } from '../../shared/domain';
 import { SuitColorService } from '../../shared/suit-color.service';
+import { DataproviderService } from '../../dataprovider.service';
 
 @Component({
   selector: 'ngx-new-order-step-three',
@@ -22,7 +24,11 @@ export class NewOrderStepThreeComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private colorAPI: SuitColorService,
-    private router: Router) { }
+    private router: Router,
+    private data: DataproviderService) {
+
+
+    }
 
   ngOnInit() {
     this.onColorListDataState();
@@ -37,7 +43,30 @@ export class NewOrderStepThreeComponent implements OnInit {
       .map((v, i) => v ? this.suitColorList[i].id : null)
       .filter(v => v !== null);
 
-    this.router.navigate(['/pages/new-order-step-four'], { queryParams: { selectedIndex: selectedOrderIds } });
+    const param = this.onFindChecked(selectedOrderIds);
+    const merged = this.onUnionParam(param);
+
+    // console.log(param);
+
+    this.data.suitColorStorage = { 'selectedIds': merged };
+
+    this.router.navigate(['/pages/new-order-step-four'] );
+  }
+
+  onFindChecked(list: []) {
+    const result = [];
+    list.forEach((obj, index) => {
+      result.push(this.suitColorList.find((v => v.id === obj)));
+    });
+    return result;
+  }
+
+  onUnionParam(list: SuitColor[]) {
+    let result: SuitColor[];
+    list.forEach((obj, index) => {
+      result = _.merge(obj);
+    });
+    return result;
   }
 
   onColorListDataState() {
@@ -49,7 +78,7 @@ export class NewOrderStepThreeComponent implements OnInit {
         a['$key'] = item.key;
         this.suitColorList.push(a as SuitColor);
 
-        const control = new FormControl(); // if first item set to true, else false
+        const control = new FormControl();
         (this.thirdForm.controls.colorList as FormArray).push(control);
       });
     });

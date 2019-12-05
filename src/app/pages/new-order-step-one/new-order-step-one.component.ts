@@ -42,39 +42,39 @@ export class NewOrderStepOneComponent implements OnInit {
     const param = this.onFindChecked(selectedOrderIds);
     const merged = this.onUnionParam(param);
 
-    this.data.storage = { 'selectedIds': merged };
+    this.data.eventStorage = { 'selectedIds': merged };
 
-    this.router.navigate(['/pages/new-order-step-two'] );
+    this.router.navigate(['/pages/new-order-step-two']);
   }
 
-onFindChecked(list: []) {
-  const result = [];
-  list.forEach((obj, index) => {
-    result.push(this.eventList.find((v => v.id === obj))['suit-type']);
-  });
-  return result;
-}
-
-onUnionParam(list: SuitType[]) {
-  let result: SuitType[];
-  list.forEach((obj, index) => {
-    result = _.merge(obj);
-  });
-  return result;
-}
-
-onEventTypeDataState() {
-  const s = this.eventAPI.GetEventTypeList();
-  s.snapshotChanges().subscribe(data => {
-    this.eventList = [];
-    data.forEach((obj, index) => {
-      const a = obj.payload.toJSON();
-      a['$key'] = obj.key;
-      this.eventList.push(a as EventType);
-
-      const control = new FormControl();
-      (this.firstForm.controls.eventTypes as FormArray).push(control);
+  onFindChecked(list: []) {
+    const result = [];
+    list.forEach((obj, index) => {
+      result.push(this.eventList.find((v => v.id === obj))['suit-type']);
     });
-  });
-}
+    return result;
+  }
+
+  onUnionParam(list: SuitType[]) {
+    let result: SuitType[];
+    list.forEach((obj, index) => {
+      result = _.merge(obj);
+    });
+    return result;
+  }
+
+  onEventTypeDataState() {
+    const s = this.eventAPI.GetEventTypeList();
+    s.snapshotChanges().subscribe(data => {
+      this.eventList = [];
+      data.forEach((obj, index) => {
+        const a = obj.payload.toJSON();
+        a['$key'] = obj.key;
+        this.eventList.push(a as EventType);
+
+        const control = new FormControl();
+        (this.firstForm.controls.eventTypes as FormArray).push(control);
+      });
+    });
+  }
 }

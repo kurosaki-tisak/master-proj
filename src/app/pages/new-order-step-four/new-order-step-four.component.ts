@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataproviderService } from '../../dataprovider.service';
 
 @Component({
   selector: 'ngx-new-order-step-four',
@@ -28,13 +30,17 @@ export class NewOrderStepFourComponent implements OnInit {
   @ViewChild('lengthShirt', { static: false }) lengthShirt: ElementRef;
   @ViewChild('lengthSuit', { static: false }) lengthSuit: ElementRef;
 
-  constructor() { }
+  constructor(private router: Router,
+    private data: DataproviderService) { }
 
   ngOnInit() {
 
   }
 
   onForthSubmit() {
+    this.data.bodyTypeStorage = this.onFindBodyType();
+
+    this.router.navigate(['/pages/new-order-step-five']);
   }
 
   onFindBodyType() {
@@ -48,15 +54,30 @@ export class NewOrderStepFourComponent implements OnInit {
     const isX = (waist / hip);
 
     if (isV >= 1.05) {
-      return 'V';
+      return {
+        'id': 3,
+        'title': 'สามเหลี่ยมตั้ง (V)',
+      };
     } else if (isH >= 0.75) {
-      return 'H';
+      return {
+        'id': 2,
+        'title': 'สี่เหลี่ยม แบบปกติ (H1)',
+      };
     } else if (isA >= 1.05) {
-      return 'A';
+      return {
+        'id': 1,
+        'title': 'สามเหลี่ยมคว่ำ (A)',
+      };
     } else if (isX <= 0.75) {
-      return 'X';
+      return {
+        'id': 4,
+        'title': 'นาฬิกาทราย (X1)',
+      };
     } else {
-      return 'O';
+      return {
+        'id': 7,
+        'title': 'วงกลม (O)',
+      };
     }
   }
 }

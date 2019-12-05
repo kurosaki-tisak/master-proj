@@ -7,3 +7,5 @@ export * from './customer';
 export * from './body-obj';
 export * from './transaction';
 export * from './transaction-order';
+export * from './body-type';
+export * from './rule-body-type-suit-part';
