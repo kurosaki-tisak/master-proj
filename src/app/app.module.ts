@@ -20,6 +20,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -40,6 +41,7 @@ import { environment } from '../environments/environment';
 
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
+    NbEvaIconsModule,
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),

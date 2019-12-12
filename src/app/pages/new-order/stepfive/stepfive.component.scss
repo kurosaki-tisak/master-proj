@@ -1,0 +1,34 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+  
+    .picture {
+      width: 100%; 
+      height: 200px; 
+      flex: 1;
+    }
+  
+    .details {
+      padding: nb-theme(card-padding);
+    }
+  
+    .description {
+      text-align: justify;
+    }
+
+    .full-name-inputs {
+      display: flex;
+      margin: 0 -0.5rem;
+      
+      > * {
+        margin: 0 0.5rem;
+      }
+    }
+
+    .row {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+}

@@ -1,0 +1,24 @@
+<nb-card>
+  <nb-card-header>
+    Step 3 (เลือกสีสูท)
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="thirdForm" (ngSubmit)="onThirdSubmit()" class="step-container">
+      <div class="row">
+        <div class="col-md-3" formArrayName="suitColors" *ngFor="let color of suitColorList; let i=index">
+          <nb-card size="small">
+            <div class="picture" [style.background-image]="'url(' + color.imageUrl + ')'"></div>
+            <div class="details">
+              <div class="description">{{ color.title }}</div>
+            </div>
+            <nb-card-footer>
+              <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </div>
+      <button nbButton (click)="onBackPressed()">prev</button>
+      <button nbButton type="submit">next</button>
+    </form>
+  </nb-card-body>
+</nb-card>

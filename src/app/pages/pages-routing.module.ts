@@ -6,12 +6,8 @@ import { OrderComponent } from './order/order.component';
 import { BillingComponent } from './billing/billing.component';
 import { CustomerComponent } from './customer/customer.component';
 import { UserComponent } from './user/user.component';
-import { NewOrderComponent } from './new-order/new-order.component';
-import { NewOrderStepOneComponent } from './new-order-step-one/new-order-step-one.component';
-import { NewOrderStepTwoComponent } from './new-order-step-two/new-order-step-two.component';
-import { NewOrderStepThreeComponent } from './new-order-step-three/new-order-step-three.component';
-import { NewOrderStepFourComponent } from './new-order-step-four/new-order-step-four.component';
-import { NewOrderStepFiveComponent } from './new-order-step-five/new-order-step-five.component';
+import { PostOrderComponent } from './post-order/post-order.component';
+import { NewDashboardComponent } from './new-dashboard/new-dashboard.component';
 import { PrintingComponent } from './printing/printing.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -43,27 +39,16 @@ const routes: Routes = [{
     },
     {
       path: 'new-order',
-      component: NewOrderComponent,
+      loadChildren: () => import('./new-order/new-order.module')
+        .then(m => m.NewOrderModule),
     },
     {
-      path: 'new-order-step-one',
-      component: NewOrderStepOneComponent,
+      path: 'new-dashboard',
+      component: NewDashboardComponent,
     },
     {
-      path: 'new-order-step-two',
-      component: NewOrderStepTwoComponent,
-    },
-    {
-      path: 'new-order-step-three',
-      component: NewOrderStepThreeComponent,
-    },
-    {
-      path: 'new-order-step-four',
-      component: NewOrderStepFourComponent,
-    },
-    {
-      path: 'new-order-step-five',
-      component: NewOrderStepFiveComponent,
+      path: 'post-order',
+      component: PostOrderComponent,
     },
     {
       path: 'billing',

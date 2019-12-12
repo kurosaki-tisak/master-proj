@@ -13,12 +13,9 @@ import { BillingModule } from './billing/billing.module';
 import { CustomerModule } from './customer/customer.module';
 import { UserModule } from './user/user.module';
 import { NewOrderModule } from './new-order/new-order.module';
+import { NewDashboardModule } from './new-dashboard/new-dashboard.module';
+import { PostOrderModule } from './post-order/post-order.module';
 import { PrintingModule } from './printing/printing.module';
-import { NewOrderStepOneModule } from './new-order-step-one/new-order-step-one.module';
-import { NewOrderStepTwoModule } from './new-order-step-two/new-order-step-two.module';
-import { NewOrderStepThreeModule } from './new-order-step-three/new-order-step-three.module';
-import { NewOrderStepFourModule } from './new-order-step-four/new-order-step-four.module';
-import { NewOrderStepFiveModule } from './new-order-step-five/new-order-step-five.module';
 
 import { DataproviderService } from '../dataprovider.service';
 
@@ -35,11 +32,8 @@ import { DataproviderService } from '../dataprovider.service';
     CustomerModule,
     UserModule,
     NewOrderModule,
-    NewOrderStepOneModule,
-    NewOrderStepTwoModule,
-    NewOrderStepThreeModule,
-    NewOrderStepFourModule,
-    NewOrderStepFiveModule,
+    PostOrderModule,
+    NewDashboardModule,
     PrintingModule,
   ],
   declarations: [

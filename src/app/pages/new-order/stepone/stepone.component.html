@@ -1,0 +1,26 @@
+<nb-card>
+  <nb-card-header>
+    Step 1 (เลือกประเภทงาน)
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="firstForm" (ngSubmit)="onFirstSubmit()" class="step-container">
+      <div class="row">
+        <div class="col-md-3" formArrayName="eventTypes" *ngFor="let event of eventList; let i=index">
+          <nb-card size="small">
+            <img class="picture" src="assets/images/kitten-corporate.png">
+            <div class="details">
+              <div class="h4">{{ event.title }}</div>
+              <div class="description">
+                คำอธิบาย {{ event.title }}
+              </div>
+            </div>
+            <nb-card-footer>
+              <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </div>
+      <button nbButton type="submit">next</button>
+    </form>
+  </nb-card-body>
+</nb-card>

@@ -13,8 +13,15 @@ import {
   NbTabsetModule,
   NbUserModule,
 } from '@nebular/theme';
+import { NewOrderRoutingModule } from '../new-order/new-order-routing.module';
 
 import { NewOrderComponent } from '../../pages/new-order/new-order.component';
+import { PopupComponent } from './popup/popup.component';
+import { SteponeComponent } from './stepone/stepone.component';
+import { SteptwoComponent } from './steptwo/steptwo.component';
+import { StepthreeComponent } from './stepthree/stepthree.component';
+import { StepfourComponent } from './stepfour/stepfour.component';
+import { StepfiveComponent } from './stepfive/stepfive.component';
 
 @NgModule({
   imports: [
@@ -31,9 +38,16 @@ import { NewOrderComponent } from '../../pages/new-order/new-order.component';
     NbStepperModule,
     NbTabsetModule,
     NbUserModule,
+    NewOrderRoutingModule,
   ],
   declarations: [
     NewOrderComponent,
+    PopupComponent,
+    SteponeComponent,
+    SteptwoComponent,
+    StepthreeComponent,
+    StepfourComponent,
+    StepfiveComponent,
   ],
 })
 export class NewOrderModule { }

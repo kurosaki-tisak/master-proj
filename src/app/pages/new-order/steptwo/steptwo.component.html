@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-header>
+    Step 2 (เลือกประเภทสูท)
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="secondForm" (ngSubmit)="onSecondSubmit()" class="step-container">
+      <div class="row">
+        <div class="col-md-6" formArrayName="suitTypes" *ngFor="let suit of suitTypeList; let i=index">
+          <nb-card size="small">
+            <div class="picture" style.background-image="url('assets/images/kitten-corporate.png')"></div>
+            <div class="details">
+              <div class="h4">{{ suit.title }}</div>
+              <div class="description">
+                คำอธิบาย {{ suit.title }}
+              </div>
+            </div>
+            <nb-card-footer>
+              <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </div>
+      <button nbButton (click)="onBackPressed()">prev</button>
+      <button nbButton type="submit">next</button>
+    </form>
+  </nb-card-body>
+</nb-card>

@@ -13,12 +13,12 @@ export class RuleBodyTypeSuitPartService {
 
   // Get Rule List
   GetRuleBodyTypeSuitPartList() {
-    this.ruleList = this.db.list('rule-bodytype-suit-part');
+    this.ruleList = this.db.list('rule-body-type-vs-suit-part');
     return this.ruleList;
   }
 
   GetRuleBodyTypeSuitPart(id: string) {
-    this.rule = this.db.object('rule-bodytype-suit-part/' + id);
+    this.rule = this.db.object('rule-body-type-vs-suit-part/' + id);
     return this.rule;
   }
 }

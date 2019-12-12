@@ -2,36 +2,25 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'DASHBOARD',
+    group: true,
+  },
+  {
+    title: 'Summary',
+    icon: 'shopping-cart-outline',
+    link: '/pages/new-dashboard',
+  },
+  {
     title: 'TRANSACTION',
     group: true,
   },
   {
-    title: 'Order',
-    link: '/pages/new-order',
-  },
-  {
-    title: 'New Order 1',
-    link: '/pages/new-order-step-one',
-  },
-  {
-    title: 'New Order 2',
-    link: '/pages/new-order-step-two',
-  },
-  {
-    title: 'New Order 3',
-    link: '/pages/new-order-step-three',
-  },
-  {
-    title: 'New Order 4',
-    link: '/pages/new-order-step-four',
-  },
-  {
-    title: 'New Order 5',
-    link: '/pages/new-order-step-five',
-  },
-  {
-    title: 'Order',
+    title: 'New Order',
     icon: 'shopping-cart-outline',
+    link: '/pages/new-order/step-one',
+  },
+  {
+    title: 'Order',
     link: '/pages/order',
   },
   {
