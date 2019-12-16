@@ -4,8 +4,11 @@ export interface Order {
   'suit-part': TransactionSuitPart;
   'suit-color': BaseOrderDetail;
   'shirt-part': TransactionShirtPart;
-  price: String;
-  payment: String;
+}
+
+export interface Payment {
+  method: string;
+  price: string;
 }
 
 export interface TransactionSuitPart {

@@ -1,9 +1,13 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NbStepperComponent } from '@nebular/theme';
+import { BodyObj } from '../../../shared/domain';
 import { DataproviderService } from '../../../dataprovider.service';
+
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'ngx-stepfour',
@@ -13,68 +17,90 @@ import { DataproviderService } from '../../../dataprovider.service';
 export class StepfourComponent implements OnInit {
 
   @ViewChild('stepper', { static: true }) stepper: NbStepperComponent;
-  @ViewChild('circumferenceNeck', { static: false }) circumferenceNeck: ElementRef;
-  @ViewChild('chest', { static: false }) chest: ElementRef;
-  @ViewChild('chestFront', { static: false }) chestFront: ElementRef;
-  @ViewChild('chestBack', { static: false }) chestBack: ElementRef;
-  @ViewChild('armLenghtRight', { static: false }) armLenghtRight: ElementRef;
-  @ViewChild('armLenghtLeft', { static: false }) armLenghtLeft: ElementRef;
-  @ViewChild('armMuscles', { static: false }) armMuscles: ElementRef;
-  @ViewChild('circumferenceCalf', { static: false }) circumferenceCalf: ElementRef;
-  @ViewChild('circumferenceLegs', { static: false }) circumferenceLegs: ElementRef;
-  @ViewChild('circumferenceThigh', { static: false }) circumferenceThigh: ElementRef;
-  @ViewChild('lengthPant', { static: false }) lengthPant: ElementRef;
-  @ViewChild('waistShirt', { static: false }) waistShirt: ElementRef;
-  @ViewChild('waistPant', { static: false }) waistPant: ElementRef;
-  @ViewChild('wrist', { static: false }) wrist: ElementRef;
-  @ViewChild('crotch', { static: false }) crotch: ElementRef;
-  @ViewChild('bellyRound', { static: false }) bellyRound: ElementRef;
-  @ViewChild('hip', { static: false }) hip: ElementRef;
-  @ViewChild('hipShirt', { static: false }) hipShirt: ElementRef;
-  @ViewChild('lengthShirt', { static: false }) lengthShirt: ElementRef;
-  @ViewChild('lengthSuit', { static: false }) lengthSuit: ElementRef;
 
   forthForm: FormGroup;
+  bodyObj: BodyObj;
+
+  popupComponent: PopupComponent;
 
   constructor(private fb: FormBuilder,
     private data: DataproviderService,
+    private dialogService: NbDialogService,
     private router: Router) { }
 
   ngOnInit() {
     this.forthForm = this.fb.group({
-      circumferenceNeckCtrl: ['', Validators.required],
-      chestCtrl: ['', Validators.required],
-      chestFrontCtrl: ['', Validators.required],
-      chestBackCtrl: ['', Validators.required],
       armLenghtRightCtrl: ['', Validators.required],
       armLenghtLeftCtrl: ['', Validators.required],
       armMusclesCtrl: ['', Validators.required],
+      bellyRoundCtrl: ['', Validators.required],
+      chestCtrl: ['', Validators.required],
+      chestFrontCtrl: ['', Validators.required],
+      chestBackCtrl: ['', Validators.required],
+      shoulderLeftCtrl: ['', Validators.required],
+      shoulderRightCtrl: ['', Validators.required],
       circumferenceCalfCtrl: ['', Validators.required],
       circumferenceLegsCtrl: ['', Validators.required],
       circumferenceThighCtrl: ['', Validators.required],
-      lengthPantCtrl: ['', Validators.required],
-      waistShirtCtrl: ['', Validators.required],
-      waistPantCtrl: ['', Validators.required],
-      wristCtrl: ['', Validators.required],
+      circumferenceNeckCtrl: ['', Validators.required],
       crotchCtrl: ['', Validators.required],
       hipCtrl: ['', Validators.required],
       hipShirtCtrl: ['', Validators.required],
+      lengthPantCtrl: ['', Validators.required],
       lengthShirtCtrl: ['', Validators.required],
       lengthSuitCtrl: ['', Validators.required],
+      waistShirtCtrl: ['', Validators.required],
+      waistPantCtrl: ['', Validators.required],
+      wristCtrl: ['', Validators.required],
     });
   }
 
   onForthSubmit() {
+    this.bodyObj = {
+      'arm-lenght-right': this.forthForm.get('armLenghtRightCtrl').value,
+      'arm-length-left': this.forthForm.get('armLenghtLeftCtrl').value,
+      'arm-muscles': this.forthForm.get('armMusclesCtrl').value,
+      'belly-round': this.forthForm.get('bellyRoundCtrl').value,
+      chest: this.forthForm.get('chestCtrl').value,
+      'chest-back': this.forthForm.get('chestBackCtrl').value,
+      'chest-front': this.forthForm.get('chestFrontCtrl').value,
+      'circumference-calf': this.forthForm.get('circumferenceCalfCtrl').value,
+      'circumference-legs': this.forthForm.get('circumferenceLegsCtrl').value,
+      'circumference-neck': this.forthForm.get('circumferenceNeckCtrl').value,
+      'circumference-thigh': this.forthForm.get('circumferenceThighCtrl').value,
+      crotch: this.forthForm.get('crotchCtrl').value,
+      hip: this.forthForm.get('hipCtrl').value,
+      'hip-shirt': this.forthForm.get('hipShirtCtrl').value,
+      'length-pant': this.forthForm.get('lengthPantCtrl').value,
+      'length-shirt': this.forthForm.get('lengthShirtCtrl').value,
+      'length-suit': this.forthForm.get('lengthSuitCtrl').value,
+      'shoulder-left': this.forthForm.get('shoulderLeftCtrl').value,
+      'shoulder-right': this.forthForm.get('shoulderRightCtrl').value,
+      'waist-pant': this.forthForm.get('waistPantCtrl').value,
+      'waist-shirt': this.forthForm.get('waistShirtCtrl').value,
+      wrist: this.forthForm.get('wristCtrl').value,
+    };
+
+    this.data.bodyObjectStorage = this.bodyObj;
+
     const bodyType = this.onFindBodyType();
     this.data.bodyTypeStorage = bodyType;
 
     this.router.navigate(['/pages/new-order/step-five']);
   }
 
+  clickInfo(url: string) {
+    this.dialogService.open(PopupComponent, {
+      context: {
+        customImageUrl: url,
+      },
+    });
+  }
+
   onFindBodyType() {
-    const chest = this.chestFront.nativeElement.value;
-    const hip = this.hip.nativeElement.value;
-    const waist = this.waistPant.nativeElement.value;
+    const chest = this.forthForm.get('chestFrontCtrl').value;
+    const hip = this.forthForm.get('hipCtrl').value;
+    const waist = this.forthForm.get('wristCtrl').value;
 
     const isV = (chest / hip);
     const isH = (hip / chest);

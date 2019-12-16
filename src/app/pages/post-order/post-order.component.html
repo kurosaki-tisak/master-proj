@@ -1,3 +1,136 @@
-<p>
-  post-order works!
-</p>
+<div class="row">
+  <div class="col-lg-12">
+    <form [formGroup]="orderForm" (ngSubmit)="onPostOrderSubmit()">
+      <nb-card>
+        <nb-card-header>
+          สั่งตัด
+        </nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="col-lg-6">
+              <label>โปรดระบุข้อมูลลูกค้า</label>
+              <div class="full-name-inputs">
+                <input type="text" nbInput fieldSize="medium" formControlName="firstNameCtrl" placeholder="ระบุชื่อ">
+                <input type="text" nbInput fieldSize="medium" formControlName="lastNameCtrl" placeholder="ระบุนามสกุล">
+              </div>
+
+              <textarea rows="5" nbInput fullWidth shape="round" formControlName="addressCtrl"
+                placeholder="ที่อยู่"></textarea>
+
+              <div class="full-name-inputs">
+                <input type="text" nbInput fieldSize="medium" formControlName="subDistrictCtrl" placeholder="แขวง/ตำบล">
+                <input type="text" nbInput fieldSize="medium" formControlName="districtCtrl" placeholder="เขต/อำเภอ">
+              </div>
+
+              <div class="full-name-inputs">
+                <input type="text" nbInput fieldSize="medium" formControlName="provinceCtrl" placeholder="จังหวัด">
+                <input type="text" nbInput fieldSize="medium" formControlName="postCtrl" placeholder="รหัสไปรษณี">
+              </div>
+
+              <input type="tel" nbInput fieldSize="medium" formControlName="telCtrl" placeholder="เบอร์โทรศัพท์ติดต่อ">
+            </div>
+            <div class="col-lg-6">
+              <div class="pull-right">
+                <div>LOGO</div>
+                <div>ชื่อบริษัท</div>
+                <div>ที่อยู่บริษัท</div>
+                <div>เบอร์โทรบริษัท</div>
+              </div>
+            </div>
+          </div>
+
+            <nb-card-header>
+              <div class="row">
+                <div class="col-md-3">
+                  รอบคอ  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  รอบอก  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ไหล่ซ้าย  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ไหล่ขวา  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  หน้าอกส่วนหน้า  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  หน้าอกส่วนหลัง  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ความยาวแขน(ขวา)  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ความยาวแขน(ซ้าย)  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  รอบกล้ามแขน  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  เอวเสื้อ  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  เอวกางเกง  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ข้อมือ  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  เป้า  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  รอบพุง  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  สะโพก  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  สะโพกเสื้อ  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ความยาวเชิ้ต  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ความยาวสูท  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  รอบน่อง  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  รอบปลายขา  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  รอบต้นขา  นิ้ว
+                </div>
+                <div class="col-md-3">
+                  ความยาวกางเกง  นิ้ว
+                </div>
+                
+              </div>
+            </nb-card-header>
+
+          <div class="row">
+            <div class="col-md-6" *ngFor="let src of sourceList; let index=index">
+              <div>รายละเอียดสูทตัวที่ {{ index + 1 }}</div>
+              <div>
+                <ng2-smart-table [settings]="settings" [source]="src.source">
+                </ng2-smart-table>
+              </div>
+            </div>
+          </div>
+
+          <ng2-smart-table [settings]="settingsPayment" [source]="source">
+          </ng2-smart-table>
+
+        </nb-card-body>
+
+        <nb-card-footer>
+          <button nbButton (click)="onBackPressed()">prev</button>
+          <button nbButton type="submit">สั่งซื้อ</button>
+        </nb-card-footer>
+      </nb-card>
+    </form>
+  </div>
+</div>

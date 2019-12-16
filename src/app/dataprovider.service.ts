@@ -15,6 +15,9 @@ export class DataproviderService {
     public suitTypeStorage: any;
     public suitColorStorage: any;
     public bodyTypeStorage: any;
+    public bodyObjectStorage: any;
+
+    public selectedRecommendedSuit: any;
 
     public constructor() { }
 

@@ -3,61 +3,39 @@
     แสดงผลการแนะนำ
   </nb-card-header>
   <nb-card-body>
-    <form>
+    <form [formGroup]="fifthForm" (ngSubmit)="onFifthSubmit()">
       <div class="row">
-        <div class="col-md-6">
-          <nb-card size="ิlarge">
-            <nb-card-header>
-              <div>
-                  <img class="picture" src="assets/images/kitten-corporate.png">
-              </div>
-            </nb-card-header>
-            <nb-card-body>
-              <div class="row">
-                <div class="label col-sm-6 col-form-label">
-                  <label>ปก</label>
-                  <label>...</label>
+        <div formArrayName="recommendedArr" *ngFor="let recommeded of mockRecommendedSuitList; let i=index">
+          <div class="card-row">
+            <div class="card-col">
+              <nb-card size="medium">
+                <img class="picture" src="assets/images/kitten-corporate.png">
+                <div class="suit-color" [style.background-image]="'url(' + recommeded['suit-color'].imageUrl + ')'">
                 </div>
-                <div class="label col-sm-6 col-form-label">
-                  <label>ปลายทรงไหล่</label>
-                  <label>...</label>
-                </div>
-                <div class="label col-sm-6 col-form-label">
-                  <label>ทรงไหล่</label>
-                  <label>...</label>
-                </div>
-                <div class="label col-sm-6 col-form-label">
-                  <label>ซับใน</label>
-                  <label>...</label>
-                </div>
-                <div class="label col-sm-6 col-form-label">
-                  <label>ผ่าหลัง</label>
-                  <label>...</label>
-                </div>
-                <div class="label col-sm-6 col-form-label">
-                  <label>กระเป๋าสูท</label>
-                  <label>...</label>
-                </div>
-                <div class="label col-sm-6 col-form-label">
-                  <label>กระดุม</label>
-                  <label>...</label>
-                </div>
-                <div class="label col-sm-6 col-form-label">
-                  <label>โครงสร้าง</label>
-                  <label>...</label>
-                </div>
-                <div class="label col-sm-3 col-form-label">
-                  <label>ลายผ้า</label>
-                  <label>...</label>
-                </div>
-              </div>
-            </nb-card-body>
-            <nb-card-footer>
-              <nb-checkbox>เลือก</nb-checkbox>
-            </nb-card-footer>
-          </nb-card>
+              </nb-card>
+            </div>
+            <div class="card-col">
+              <nb-card size="medium">
+                <nb-card-header>
+                  {{ recommeded['suit-type'].title }}
+                </nb-card-header>
+                <nb-card-body>
+                  <div class="row" *ngFor="let item of recommeded['suit-part']">
+                    <label class="description col-sm-4 col-form-label">{{ item.title }}</label>
+                    <label class="description col-sm-6 col-form-label">{{ item.sub[0].title }}</label>
+                    <nb-icon class="col-sm-2" icon="info-outline" status="warning"></nb-icon>
+                  </div>
+                </nb-card-body>
+                <nb-card-footer>
+                  <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>
+                </nb-card-footer>
+              </nb-card>
+            </div>
+          </div>
         </div>
       </div>
+      <button nbButton (click)="onBackPressed()">prev</button>
+      <button nbButton type="submit">next</button>
     </form>
   </nb-card-body>
 </nb-card>

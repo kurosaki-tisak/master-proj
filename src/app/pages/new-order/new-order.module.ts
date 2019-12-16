@@ -4,10 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NbAccordionModule,
   NbButtonModule,
+  NbLayoutModule,
   NbCardModule,
   NbIconModule,
   NbCheckboxModule,
   NbListModule,
+  NbDialogModule,
   NbRouteTabsetModule,
   NbStepperModule,
   NbTabsetModule,
@@ -30,9 +32,11 @@ import { StepfiveComponent } from './stepfive/stepfive.component';
     ReactiveFormsModule,
     NbAccordionModule,
     NbButtonModule,
+    NbLayoutModule,
     NbCardModule,
     NbIconModule,
     NbCheckboxModule,
+    NbDialogModule.forChild(),
     NbListModule,
     NbRouteTabsetModule,
     NbStepperModule,
@@ -48,6 +52,9 @@ import { StepfiveComponent } from './stepfive/stepfive.component';
     StepthreeComponent,
     StepfourComponent,
     StepfiveComponent,
+  ],
+  entryComponents: [
+    PopupComponent,
   ],
 })
 export class NewOrderModule { }

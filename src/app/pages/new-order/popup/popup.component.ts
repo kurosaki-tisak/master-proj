@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-popup',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopupComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  customImageUrl: string;
+
+  imageUrl: any;
+
+  constructor(protected ref: NbDialogRef<PopupComponent>) {}
 
   ngOnInit() {
+    this.imageUrl = this.customImageUrl;
   }
 
+  dismiss() {
+    this.ref.close();
+  }
 }

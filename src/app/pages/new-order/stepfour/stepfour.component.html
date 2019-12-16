@@ -10,133 +10,151 @@
             <nb-card-header>สัดส่วนท่อนบน</nb-card-header>
             <div class="form-group row">
               <label class="label col-sm-3 col-form-label">รอบคอ</label>
-              <input type="number" nbInput fullWidth fieldSize="large" formControlName="circumferenceNeckCtrl"
-                #circumferenceNeck placeholder="รอบคอ">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
-              <nb-icon icon="info-outline" status="warning"></nb-icon>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="circumferenceNeckCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>             
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%84%E0%B8%AD.jpg?alt=media&token=1617e568-4459-4118-a171-c7597b2525b7')"></nb-icon>
             </div>
             <div class="form-group row">
               <label class="label col-sm-3 col-form-label">รอบอก</label>
-              <input type="number" nbInput fullWidth fieldSize="large" formControlName="chestCtrl" #chest
-                placeholder="รอบอก">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="chestCtrl" >
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%AD%E0%B8%81.jpg?alt=media&token=bb05d096-1435-493b-aba6-5e148ab50b7f')"></nb-icon>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ไหล่ซ้าย</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="shoulderLeftCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B9%84%E0%B8%AB%E0%B8%A5%E0%B9%88.jpg?alt=media&token=117c53d6-88c0-4c36-bcb4-ad4ba018ffed')"></nb-icon>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ไหล่ขวา</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="shoulderRightCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B9%84%E0%B8%AB%E0%B8%A5%E0%B9%88.jpg?alt=media&token=117c53d6-88c0-4c36-bcb4-ad4ba018ffed')"></nb-icon>
             </div>
             <div class="form-group row">
               <label class="label col-sm-3 col-form-label">หน้าอกส่วนหน้า</label>
-              <input type="number" nbInput fullWidth fieldSize="large" formControlName="chestFrontCtrl" #chestFront
-                placeholder="หน้าอกส่วนหน้า">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="chestFrontCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%81%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2.jpg?alt=media&token=c92c701e-4c5f-4123-9cb5-051df719ef04')"></nb-icon>
             </div>
             <div class="form-group row">
               <label class="label col-sm-3 col-form-label">หน้าอกส่วนหลัง</label>
-              <input type="number" nbInput fullWidth fieldSize="large" formControlName="chestBackCtrl" #chestBack
-                placeholder="หน้าอกส่วนหลัง">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="chestBackCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%AD%E0%B8%81%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87.jpg?alt=media&token=423038da-9a38-416a-a4a6-b39e7a96de73')"></nb-icon>
             </div>
             <div class="form-group row">
               <label class="label col-sm-3 col-form-label">ความยาวแขน(ขวา)</label>
-              <input type="number" nbInput fullWidth fieldSize="large" formControlName="armLenghtRightCtrl"
-                #armLenghtRight placeholder="ความยาวแขน(ขวา)">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="armLenghtRightCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B9%81%E0%B8%82%E0%B8%99%E0%B8%8B%E0%B9%89%E0%B8%B2%E0%B8%A2%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%82%E0%B8%A7%E0%B8%B2.jpg?alt=media&token=77472596-6ece-41df-98f6-df596fbbf314')"></nb-icon>
             </div>
             <div class="form-group row">
               <label class="label col-sm-3 col-form-label">ความยาวแขน(ซ้าย)</label>
-              <input type="number" nbInput fullWidth fieldSize="large" formControlName="armLenghtLeftCtrl"
-                #armLenghtLeft placeholder="ความยาวแขน(ซ้าย)">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="armLenghtLeftCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B9%81%E0%B8%82%E0%B8%99%E0%B8%8B%E0%B9%89%E0%B8%B2%E0%B8%A2%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%82%E0%B8%A7%E0%B8%B2.jpg?alt=media&token=77472596-6ece-41df-98f6-df596fbbf314')"></nb-icon>
             </div>
             <div class="form-group row">
               <label class="label col-sm-3 col-form-label">รอบกล้ามแขน</label>
-              <input type="number" nbInput fullWidth fieldSize="large" formControlName="armMusclesCtrl" #armMuscles
-                placeholder="รอบกล้ามแขน">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <input type="number" nbInput fullWidth fieldSize="large" formControlName="armMusclesCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%82%E0%B8%99.jpg?alt=media&token=59bd7db8-56a2-4809-9f39-09941d8d8fea')"></nb-icon>
             </div>
           </nb-card>
 
         </div>
         <div class="col-md-6">
           <nb-card>
-            <nb-card-header>สัดส่วนท่อนล่าง</nb-card-header>
+            <nb-card-header>สัดส่วนท่อนกลาง</nb-card-header>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">รอบน่อง</label>
-              <input type="number" nbInput fullWidth formControlName="circumferenceCalfCtrl" #circumferenceCalf
-                placeholder="รอบน่อง">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">เอวเสื้อ</label>
+              <input type="number" nbInput fullWidth formControlName="waistShirtCtrl"
+                placeholder="เหนือสะดือ">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B9%80%E0%B8%AD%E0%B8%A7.jpg?alt=media&token=e3223d22-6446-49fd-8616-dd5a23c09ff7')"></nb-icon>
             </div>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">รอบปลายขา</label>
-              <input type="number" nbInput fullWidth formControlName="circumferenceLegsCtrl" #circumferenceLegs
-                placeholder="รอบปลายขา">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">เอวกางเกง</label>
+              <input type="number" nbInput fullWidth formControlName="waistPantCtrl"
+                placeholder="เอวที่ใส่กางเกงปกติ">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B9%80%E0%B8%AD%E0%B8%A7.jpg?alt=media&token=e3223d22-6446-49fd-8616-dd5a23c09ff7')"></nb-icon>
             </div>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">รอบต้นขา</label>
-              <input type="number" nbInput fullWidth formControlName="circumferenceThighCtrl" #circumferenceThigh
-                placeholder="รอบต้นขา">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">ข้อมือ</label>
+              <input type="number" nbInput fullWidth formControlName="wristCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B7%E0%B8%AD.jpg?alt=media&token=f8d144e0-d2a5-4677-b227-f6284f44793d')"></nb-icon>
             </div>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">ความยาวกางเกง</label>
-              <input type="number" nbInput fullWidth formControlName="lengthPantCtrl" #lengthPant
-                placeholder="ความยาวกางเกง">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">เป้า</label>
+              <input type="number" nbInput fullWidth formControlName="crotchCtrl"
+                placeholder="จากขอบกางเกงด้านหน้า อ้อมไปถึงด้านหลัง">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2.jpg?alt=media&token=74275fff-d79f-42ea-9705-d97e12b82806')"></nb-icon>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">รอบพุง</label>
+              <input type="number" nbInput fullWidth formControlName="bellyRoundCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B9%80%E0%B8%AD%E0%B8%A7.jpg?alt=media&token=e3223d22-6446-49fd-8616-dd5a23c09ff7')"></nb-icon>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">สะโพก</label>
+              <input type="number" nbInput fullWidth formControlName="hipCtrl"
+                placeholder="ตรงช่วงก้นที่นูนที่สุด">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%AA%E0%B8%B0%E0%B9%82%E0%B8%9E%E0%B8%81%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%80%E0%B8%AD%E0%B8%A7%E0%B8%81%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%81%E0%B8%87.jpg?alt=media&token=8721ee45-c917-4953-93b1-14cc4f9da1ff')"></nb-icon>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">สะโพกเสื้อ</label>
+              <input type="number" nbInput fullWidth formControlName="hipShirtCtrl"
+                placeholder="บริเวณรอบสะโพกที่กว้างที่สุด">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%AA%E0%B8%B0%E0%B9%82%E0%B8%9E%E0%B8%81%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%80%E0%B8%AD%E0%B8%A7%E0%B8%81%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%81%E0%B8%87.jpg?alt=media&token=8721ee45-c917-4953-93b1-14cc4f9da1ff')"></nb-icon>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ความยาวเชิ้ต</label>
+              <input type="number" nbInput fullWidth formControlName="lengthShirtCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B8%AA%E0%B8%B9%E0%B8%97%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B9%80%E0%B8%AA%E0%B8%B7%E0%B9%89%E0%B8%AD.jpg?alt=media&token=e69dfba1-c26d-4bf2-b017-46f6dc71a485')"></nb-icon>
+            </div>
+            <div class="form-group row">
+              <label class="label col-sm-3 col-form-label">ความยาวสูท</label>
+              <input type="number" nbInput fullWidth formControlName="lengthSuitCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B8%AA%E0%B8%B9%E0%B8%97%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B9%80%E0%B8%AA%E0%B8%B7%E0%B9%89%E0%B8%AD.jpg?alt=media&token=e69dfba1-c26d-4bf2-b017-46f6dc71a485')"></nb-icon>
             </div>
           </nb-card>
         </div>
         <div class="col-md-6">
           <nb-card>
-            <nb-card-header>สัดส่วนท่อนกลาง</nb-card-header>
+            <nb-card-header>สัดส่วนท่อนล่าง</nb-card-header>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">เอวเสื้อ</label>
-              <input type="number" nbInput fullWidth formControlName="waistShirtCtrl" #waistShirt
-                placeholder="เอวเสื้อ (เหนือสะดือ)">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">รอบน่อง</label>
+              <input type="number" nbInput fullWidth formControlName="circumferenceCalfCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%99%E0%B9%88%E0%B8%AD%E0%B8%87.jpg?alt=media&token=690969a9-b20d-4092-b62f-9e8c7b4fe952')"></nb-icon>
             </div>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">เอวกางเกง</label>
-              <input type="number" nbInput fullWidth formControlName="waistPantCtrl" #waistPant
-                placeholder="เอวกางเกง (เอวที่ใส่กางเกงปกติ)">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">รอบปลายขา</label>
+              <input type="number" nbInput fullWidth formControlName="circumferenceLegsCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%B2.jpg?alt=media&token=ee453fd5-92f6-4030-98a1-5cd8f3d8866e')"></nb-icon>
             </div>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">ข้อมือ</label>
-              <input type="number" nbInput fullWidth formControlName="wristCtrl" #wrist placeholder="ข้อมือ">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">รอบต้นขา</label>
+              <input type="number" nbInput fullWidth formControlName="circumferenceThighCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%95%E0%B9%89%E0%B8%99%E0%B8%82%E0%B8%B2.jpg?alt=media&token=3613fec2-8344-4798-8b5c-a0aac14c9b46')"></nb-icon>
             </div>
             <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">เป้า</label>
-              <input type="number" nbInput fullWidth formControlName="crotchCtrl" #crotch
-                placeholder="เป้า (จากขอบกางเกงด้านหน้า อ้อมไปถึงด้านหลัง)">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
-            </div>
-            <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">รอบพุง</label>
-              <input type="number" nbInput fullWidth #bellyRound placeholder="รอบพุง">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
-            </div>
-            <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">สะโพก</label>
-              <input type="number" nbInput fullWidth formControlName="hipCtrl" #hip
-                placeholder="สะโพก (ตรงช่วงก้นที่นูนที่สุด)">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
-            </div>
-            <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">สะโพกเสื้อ</label>
-              <input type="number" nbInput fullWidth formControlName="hipShirtCtrl" #hipShirt
-                placeholder="สะโพกเสื้อ (บริเวณรอบสะโพกที่กว้างที่สุด)">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
-            </div>
-            <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">ความยาวเชิ้ต</label>
-              <input type="number" nbInput fullWidth formControlName="lengthShirtCtrl" #lengthShirt
-                placeholder="ความยาวเชิ้ต">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
-            </div>
-            <div class="form-group row">
-              <label class="label col-sm-3 col-form-label">ความยาวสูท</label>
-              <input type="number" nbInput fullWidth formControlName="lengthSuitCtrl" #lengthSuit
-                placeholder="ความยาวสูท">
-              <label class="label col-sm-3 col-form-label">นิ้ว</label>
+              <label class="label col-sm-3 col-form-label">ความยาวกางเกง</label>
+              <input type="number" nbInput fullWidth formControlName="lengthPantCtrl">
+              <label class="label col-sm-1 col-form-label">นิ้ว</label>
+              <nb-icon icon="info-outline" status="warning" (click)="clickInfo('https://firebasestorage.googleapis.com/v0/b/bsd-master-project.appspot.com/o/measurement%2F%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B8%81%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%81%E0%B8%87.jpg?alt=media&token=75fd95a3-c6a8-402e-81a8-14be7077c5ae')"></nb-icon>
             </div>
           </nb-card>
         </div>
