@@ -30,6 +30,8 @@ export class PostOrderComponent implements OnInit {
   provinceCtrl: FormControl;
   postCtrl: FormControl;
   telCtrl: FormControl;
+  methodCtrl: FormControl;
+  priceCtrl: FormControl;
 
   customerObj: Customer;
   transactionObj: Transaction;
@@ -70,7 +72,7 @@ export class PostOrderComponent implements OnInit {
     private router: Router) {
 
     this.bodyType = this.db.bodyTypeStorage;
-    this.bodyObj = this.db.bodyObjectStorage;
+    this.bodyObj = this.db.bodyObjectStorage as BodyObj;
     this.eventType = this.db.selectedEventTypeStorage;
     this.suitType = this.db.selectedSuitTypeStorage;
     this.suitColor = this.db.selectedSuitColorStorage;

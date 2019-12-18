@@ -35,7 +35,7 @@ export class StepthreeComponent implements OnInit {
 
   onThirdSubmit() {
     const selectedOrderIds = this.thirdForm.value.suitColors
-      .map((v, i) => v ? this.suitColorList[i].title : null)
+      .map((v, i) => v ? this.suitColorList[i] : null)
       .filter(v => v !== null);
 
     this.data.selectedSuitColorStorage = selectedOrderIds;
@@ -55,7 +55,7 @@ export class StepthreeComponent implements OnInit {
     const uniqueBy = _.unionBy(unique, 'title');
     const diff = _.differenceBy(this.suitColorList, uniqueBy, 'title');
 
-    this.suitColorList.splice(0, this.suitColorList.length);
+    this.suitColorList = [];
     this.thirdForm.controls.suitColors.reset();
 
     diff.forEach((obj, index) => {
@@ -77,7 +77,9 @@ export class StepthreeComponent implements OnInit {
       });
 
       const prevData = this.data.selectedEventTypeStorage;
+
       this.onSetSuitColorToView(prevData);
+
     });
   }
 

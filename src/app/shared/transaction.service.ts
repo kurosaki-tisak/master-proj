@@ -23,7 +23,7 @@ export class TransactionService {
   }
 
   PostOrder(item: any) {
-    this.transaction = this.db.object('transaction');
-    return this.transaction.set({ item });
+    const ref = this.db.list('transaction');
+    return ref.push(item);
   }
 }

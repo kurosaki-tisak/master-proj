@@ -4,4 +4,5 @@ export interface SuitPart {
   id: Number;
   title: string;
   sub: SubSuitPart[];
+  isFixed: boolean;
 }

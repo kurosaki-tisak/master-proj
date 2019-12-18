@@ -4,35 +4,33 @@
   </nb-card-header>
   <nb-card-body>
     <form [formGroup]="fifthForm" (ngSubmit)="onFifthSubmit()">
-      <div class="row">
-        <div formArrayName="recommendedArr" *ngFor="let recommeded of mockRecommendedSuitList; let i=index">
-          <div class="card-row">
-            <div class="card-col">
-              <nb-card size="medium">
-                <img class="picture" src="assets/images/kitten-corporate.png">
-                <div class="suit-color" [style.background-image]="'url(' + recommeded['suit-color'].imageUrl + ')'">
-                </div>
-              </nb-card>
-            </div>
-            <div class="card-col">
-              <nb-card size="medium">
-                <nb-card-header>
-                  {{ recommeded['suit-type'].title }}
-                </nb-card-header>
-                <nb-card-body>
-                  <div class="row" *ngFor="let item of recommeded['suit-part']">
-                    <label class="description col-sm-4 col-form-label">{{ item.title }}</label>
-                    <label class="description col-sm-6 col-form-label">{{ item.sub[0].title }}</label>
-                    <nb-icon class="col-sm-2" icon="info-outline" status="warning"></nb-icon>
+      <div class="row" formArrayName="recommendedArr" *ngFor="let recommeded of finalRecommendedSuitList; let i=index">
+        <nb-card size="medium">
+          <nb-card-body>
+            <div class="row">
+              <div class="col-lg-3">
+                
+                <label class="description col-form-label">{{ recommeded['suit-type'].title }}</label>
+                <img class="suit-color" [src]="recommeded['suit-color'].imageUrl">
+                <label class="description col-form-label">{{ recommeded['suit-color'].title }}</label>
+              </div>
+              <div class="col-lg-9">
+                <div class="row">
+                  <div class="col-md-6" *ngFor="let item of recommeded['suit-part']">
+                    <div>
+                      <div class="picture-part" [style.background-image]="'url(' + item.sub[0].imageUrl + ')'"></div>
+                      <label class="description col-form-label">{{ item.title }} {{ item.sub[0].title }}</label>
+                    </div>
                   </div>
-                </nb-card-body>
-                <nb-card-footer>
-                  <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>
-                </nb-card-footer>
-              </nb-card>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </nb-card-body>
+          <nb-card-footer>
+            <nb-checkbox [formControlName]="i">เลือก</nb-checkbox>
+          </nb-card-footer>
+
+        </nb-card>
       </div>
       <button nbButton (click)="onBackPressed()">prev</button>
       <button nbButton type="submit">next</button>

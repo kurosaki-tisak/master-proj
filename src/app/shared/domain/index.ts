@@ -13,5 +13,6 @@ export * from './rule-event-type-vs-suit-color';
 export * from './rule-body-type-suit-part';
 export * from './rule-suit-type-vs-suit-part';
 export * from './rule-event-type-vs-suit-part';
+export * from './rule-body-type-vs-suit-color';
 
 export * from './mock-recommended';

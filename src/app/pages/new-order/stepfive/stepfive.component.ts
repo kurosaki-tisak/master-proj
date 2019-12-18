@@ -3,19 +3,21 @@ import * as _ from 'lodash';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
+  EventType,
+  SuitType,
+  SuitColor,
+  SuitPart,
   RuleBodyTypeSuitPart,
   RuleSuitTypeVsSuitPart,
   RuleEventTypeVsSuitPart,
+  RuleBodyTypeVsSuitColor,
   BodyType,
-
-  MockRecommed,
 } from '../../../shared/domain';
 import {
   RuleBodyTypeSuitPartService,
   RuleEventTypeVsSuitPartService,
   RuleSuitTypeVsSuitPartService,
-
-  MockRecomendedSuitService,
+  RuleBodyTypeVsSuitColorService,
 } from '../../../shared';
 import { DataproviderService } from '../../../dataprovider.service';
 
@@ -26,7 +28,14 @@ import { DataproviderService } from '../../../dataprovider.service';
 })
 export class StepfiveComponent implements OnInit {
 
+  selectedEventType: EventType[];
+  selectedSuitType: SuitType[];
+  selectedSuitColor: SuitColor[];
+
+  bodyType: BodyType;
+
   ruleBodyTypeList: RuleBodyTypeSuitPart[];
+  ruleBodyTypeVsSuitColorList: RuleBodyTypeVsSuitColor[];
   ruleSuitTypeList: RuleSuitTypeVsSuitPart[];
   ruleEventTypeList: RuleEventTypeVsSuitPart[];
 
@@ -34,57 +43,122 @@ export class StepfiveComponent implements OnInit {
   filteredRuleSuitTypeVsSuitPart: RuleSuitTypeVsSuitPart[];
   filteredRuleEventTypeVsSuitPart: RuleEventTypeVsSuitPart[];
 
-  bodyType: BodyType;
-
+  noSelectOptionRecommendedSuitList: any[];
+  finalRecommendedSuitList: any[];
   selectedRecommendedSuitList: any[];
-  mockRecommendedSuitList: MockRecommed[];
 
   fifthForm: FormGroup;
 
   constructor(private data: DataproviderService,
     private ruleBodyTypeAPI: RuleBodyTypeSuitPartService,
+    private ruleBodyTypeVsSuitColorAPI: RuleBodyTypeVsSuitColorService,
     private ruleEventTypeAPI: RuleEventTypeVsSuitPartService,
     private ruleSuitTypeAPI: RuleSuitTypeVsSuitPartService,
     private fb: FormBuilder,
-    private router: Router,
+    private router: Router) {
 
-    private mockRecommededAPI: MockRecomendedSuitService) {
+    this.bodyType = this.data.bodyTypeStorage as BodyType;
+    this.selectedEventType = (data.selectedEventTypeStorage as EventType[]);
+    this.selectedSuitType = (data.selectedSuitTypeStorage as SuitType[]);
+    this.selectedSuitColor = (data.selectedSuitColorStorage as SuitColor[]);
+
     this.fifthForm = this.fb.group({
       recommendedArr: new FormArray([]),
     });
   }
 
   ngOnInit() {
-    this.bodyType = this.data.bodyTypeStorage;
-
     this.onGetRuleBodyTypeState();
-    this.onGetRuleSuitTypeVsSuitPartState();
     this.onGetRuleEventTypeVsSuitPartState();
-
-    this.onGetMockData();
   }
 
-  onFifthSubmit() {
-    const selectedOrderIds = this.fifthForm.value.recommendedArr
-      .map((v, i) => v ? this.mockRecommendedSuitList[i].id : null)
-      .filter(v => v !== null);
+  onFindRecommendBySuitTypeAndBodyType(list: RuleSuitTypeVsSuitPart[]) {
 
-    this.selectedRecommendedSuitList = [];
-    selectedOrderIds.forEach(item => {
-      const b = _.find(this.mockRecommendedSuitList, ['id', item]);
-      const obj = {
-        'suit-color': b['suit-color'],
-        'suit-type': b['suit-type'],
-        'suit-part': b['suit-part'],
-      };
-      this.selectedRecommendedSuitList.push(obj);
+    this.selectedSuitType.forEach(item => {
+
+      const sp = list.find(v => v['suit-type'].id === item.id);
+      const spArr = _.toArray(sp['suit-part']);
+
+      const s = this.onFillMissingSuitPart(spArr);
+
+      this.onInsertSuitTypeAndSuitParts(item, s);
     });
 
-    const s = _.union(this.selectedRecommendedSuitList);
+  }
 
-    this.data.selectedRecommendedSuit = s;
+  onFillMissingSuitPart(list: SuitPart[]) {
+    const s = this.ruleBodyTypeList
+      .filter(v => v['body-type'].id === this.bodyType.id);
 
-    this.router.navigate(['/pages/post-order']);
+    const sp = _.toArray(s[0]['suit-part']);
+
+    const newList = [];
+    list.forEach((obj, index) => {
+
+      if (obj.sub == null) {
+        const newObj = {
+          id: obj.id,
+          title: obj.title,
+          sub: sp.find(v => v.id === obj.id).sub,
+          isFixed: obj.isFixed,
+        };
+        newList.push(newObj);
+      }
+      newList.push(obj);
+
+    });
+
+    const filtered = _.uniqBy(newList, 'id');
+    return filtered;
+  }
+
+  onFindRecommendedByBodyType() {
+    const s = this.ruleBodyTypeList
+      .filter((v, i) => v['body-type'].id === this.bodyType.id);
+
+    const sp = _.toArray(s[0]['suit-part']);
+
+    this.noSelectOptionRecommendedSuitList = [];
+    this.finalRecommendedSuitList = [];
+
+    this.onInsertSuitTypeAndSuitParts(
+      {
+        title: 'Made to Maesurement',
+        imageUrl: '',
+      },
+      sp);
+
+    // Continue Find
+    this.onGetRuleSuitTypeVsSuitPartState();
+  }
+
+  onInsertSuitTypeAndSuitParts(suitType: any, suitParts: any[]) {
+    const sc = this.ruleBodyTypeVsSuitColorList
+      .find(v => v['body-type'].id === this.bodyType.id);
+
+    const selectedColors = this.data.selectedSuitColorStorage;
+
+    let scmap: any;
+    if (selectedColors === null) {
+      scmap = _.toArray(sc['suit-color']);
+    } else {
+      scmap = _.toArray(selectedColors);
+    }
+
+    scmap.forEach((item, index) => {
+      const obj = {
+        id: index,
+        'suit-color': item,
+        'suit-type': suitType,
+        'suit-part': suitParts,
+      };
+
+      this.noSelectOptionRecommendedSuitList.push(obj);
+      this.finalRecommendedSuitList.push(obj);
+
+      const control = new FormControl();
+      (this.fifthForm.controls.recommendedArr as FormArray).push(control);
+    });
   }
 
   onGetRuleBodyTypeState() {
@@ -97,8 +171,21 @@ export class StepfiveComponent implements OnInit {
         this.ruleBodyTypeList.push(a as RuleBodyTypeSuitPart);
       });
 
-      this.filteredRuleBodyTypeSuitPart = this.ruleBodyTypeList
-        .filter((v, i) => v['body-type'].id === this.bodyType.id);
+      this.onGetRuleBodyTypeVsSuitColorState();
+    });
+  }
+
+  onGetRuleBodyTypeVsSuitColorState() {
+    const s = this.ruleBodyTypeVsSuitColorAPI.GetRuleBodyTypeSuitColorList();
+    s.snapshotChanges().subscribe(data => {
+      this.ruleBodyTypeVsSuitColorList = [];
+      data.forEach((obj, index) => {
+        const a = obj.payload.toJSON();
+        a['$key'] = obj.key;
+        this.ruleBodyTypeVsSuitColorList.push(a as RuleBodyTypeVsSuitColor);
+      });
+
+      this.onFindRecommendedByBodyType();
     });
   }
 
@@ -123,30 +210,37 @@ export class StepfiveComponent implements OnInit {
         a['$key'] = obj.key;
         this.ruleSuitTypeList.push(a as RuleSuitTypeVsSuitPart);
       });
+
+      this.onFindRecommendBySuitTypeAndBodyType(this.ruleSuitTypeList);
+
     });
+  }
+
+  onFifthSubmit() {
+    this.selectedRecommendedSuitList = [];
+
+    const selectedOrderIds = this.fifthForm.value.recommendedArr
+      .map((v, i) => v ? this.finalRecommendedSuitList[i].id : null)
+      .filter(v => v !== null);
+
+    selectedOrderIds.forEach(item => {
+      const b = _.find(this.finalRecommendedSuitList, ['id', item]);
+      const obj = {
+        'suit-color': b['suit-color'],
+        'suit-type': b['suit-type'],
+        'suit-part': b['suit-part'],
+      };
+      this.selectedRecommendedSuitList.push(obj);
+    });
+
+    const s = _.union(this.selectedRecommendedSuitList);
+
+    this.data.selectedRecommendedSuit = s;
+
+    this.router.navigate(['/pages/post-order']);
   }
 
   onBackPressed() {
     this.router.navigate(['/pages/new-order/step-four']);
-  }
-
-  // Mock Recommended
-  onGetMockData() {
-    const s = this.mockRecommededAPI.GetMockRecommendedSuit();
-    s.snapshotChanges().subscribe(data => {
-      this.mockRecommendedSuitList = [];
-      data.forEach((obj, index) => {
-        const a = obj.payload.toJSON();
-        a['$key'] = obj.key;
-        const o = a as MockRecommed;
-        const arrP = _.toArray(o['suit-part']);
-        o['suit-part'] = arrP;
-
-        this.mockRecommendedSuitList.push(o as MockRecommed);
-
-        const control = new FormControl();
-        (this.fifthForm.controls.recommendedArr as FormArray).push(control);
-      });
-    });
   }
 }

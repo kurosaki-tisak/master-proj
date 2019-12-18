@@ -33,7 +33,7 @@ export class SteptwoComponent implements OnInit {
 
   onSecondSubmit() {
     const selectedOrderIds = this.secondForm.value.suitTypes
-      .map((v, i) => v ? this.suitTypeList[i].title : null)
+      .map((v, i) => v ? this.suitTypeList[i] : null)
       .filter(v => v !== null);
 
     this.data.selectedSuitTypeStorage = selectedOrderIds;
@@ -44,7 +44,7 @@ export class SteptwoComponent implements OnInit {
   onSetSuitTypeToView(list: []) {
     const s = _.differenceBy(this.suitTypeList, list, 'title');
 
-    this.suitTypeList.splice(0, this.suitTypeList.length);
+    this.suitTypeList = [];
     this.secondForm.controls.suitTypes.reset();
 
     s.forEach((obj, index) => {
@@ -66,6 +66,7 @@ export class SteptwoComponent implements OnInit {
       });
 
       const prevData = this.data.filteredSuitTypeStorage;
+
       this.onSetSuitTypeToView(prevData);
 
     });

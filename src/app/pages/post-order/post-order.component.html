@@ -42,70 +42,70 @@
             <nb-card-header>
               <div class="row">
                 <div class="col-md-3">
-                  รอบคอ  นิ้ว
+                  รอบคอ {{ bodyObj['circumference-neck'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  รอบอก  นิ้ว
+                  รอบอก {{ bodyObj.chest }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ไหล่ซ้าย  นิ้ว
+                  ไหล่ซ้าย {{ bodyObj['shoulder-left'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ไหล่ขวา  นิ้ว
+                  ไหล่ขวา {{ bodyObj['shoulder-right'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  หน้าอกส่วนหน้า  นิ้ว
+                  หน้าอกส่วนหน้า {{ bodyObj['chest-front'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  หน้าอกส่วนหลัง  นิ้ว
+                  หน้าอกส่วนหลัง {{ bodyObj['chest-back'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ความยาวแขน(ขวา)  นิ้ว
+                  ความยาวแขน(ขวา) {{ bodyObj['arm-lenght-right'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ความยาวแขน(ซ้าย)  นิ้ว
+                  ความยาวแขน(ซ้าย) {{ bodyObj['arm-length-left'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  รอบกล้ามแขน  นิ้ว
+                  รอบกล้ามแขน {{ bodyObj['arm-muscles'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  เอวเสื้อ  นิ้ว
+                  เอวเสื้อ {{ bodyObj['waist-shirt'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  เอวกางเกง  นิ้ว
+                  เอวกางเกง {{ bodyObj['waist-pant'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ข้อมือ  นิ้ว
+                  ข้อมือ {{ bodyObj.wrist }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  เป้า  นิ้ว
+                  เป้า {{ bodyObj.crotch }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  รอบพุง  นิ้ว
+                  รอบพุง {{ bodyObj['belly-round'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  สะโพก  นิ้ว
+                  สะโพก {{ bodyObj.hip }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  สะโพกเสื้อ  นิ้ว
+                  สะโพกเสื้อ {{ bodyObj['hip-shirt'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ความยาวเชิ้ต  นิ้ว
+                  ความยาวเชิ้ต {{ bodyObj['length-shirt'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ความยาวสูท  นิ้ว
+                  ความยาวสูท {{ bodyObj['length-suit'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  รอบน่อง  นิ้ว
+                  รอบน่อง {{ bodyObj['circumference-calf'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  รอบปลายขา  นิ้ว
+                  รอบปลายขา {{ bodyObj['circumference-legs'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  รอบต้นขา  นิ้ว
+                  รอบต้นขา {{ bodyObj['circumference-thigh'] }} นิ้ว
                 </div>
                 <div class="col-md-3">
-                  ความยาวกางเกง  นิ้ว
+                  ความยาวกางเกง {{ bodyObj['length-pant'] }} นิ้ว
                 </div>
                 
               </div>
@@ -121,8 +121,8 @@
             </div>
           </div>
 
-          <ng2-smart-table [settings]="settingsPayment" [source]="source">
-          </ng2-smart-table>
+          <input type="number" nbInput fieldSize="large" formControlName="methodCtrl" placeholder="ช่องทางการชำระเงิน">
+          <input type="number" nbInput fieldSize="large" formControlName="priceCtrl" placeholder="ราคา">
 
         </nb-card-body>
 
